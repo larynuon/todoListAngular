@@ -3,5 +3,6 @@
     <Build />
     <Deploy />
   </Project>
+  <Project Path="todoListAngular.Server.Tests/todoList.Server.Tests.csproj" />
   <Project Path="todoListAngular.Server/todoListAngular.Server.csproj" />
 </Solution>
