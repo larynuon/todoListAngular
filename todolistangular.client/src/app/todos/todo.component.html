@@ -1,0 +1,32 @@
+<h2>TODO List</h2>
+
+<!-- Error message display (shown when error() has a value) -->
+<div *ngIf="error()" style="color: red; margin-bottom: 8px;">
+  {{ error() }}
+</div>
+
+<!-- Input form for adding new TODOs -->
+<div style="display: flex; gap: 8px; margin-bottom: 12px;">
+  <!-- Text input with two-way binding to newTitle signal -->
+  <input type="text"
+         [(ngModel)]="newTitle"
+         placeholder="Add a TODO..."
+         (keyup.enter)="add()"
+         style="flex: 1;" />
+  <!-- Add button triggers the add() method -->
+  <button type="button" (click)="add()">Add</button>
+</div>
+
+<!-- Loading indicator (shown while fetching data) -->
+<div *ngIf="isLoading()">Loading…</div>
+
+<!-- TODO items list (hidden while loading) -->
+<ul *ngIf="!isLoading()">
+  <!-- Loop through each TODO item -->
+  <li *ngFor="let item of items()" style="display: flex; align-items: center; gap: 8px;">
+    <!-- Display TODO title -->
+    <span style="flex: 1;">{{ item.title }}</span>
+    <!-- Delete button triggers remove() method with item ID -->
+    <button type="button" (click)="remove(item.id)">Delete</button>
+  </li>
+</ul>
